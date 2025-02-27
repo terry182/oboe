@@ -64,6 +64,7 @@ public class MainActivity extends BaseOboeTesterActivity {
     private CheckBox mForegroundServiceCheckBox;
     private static String mVersionText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

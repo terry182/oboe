@@ -116,6 +116,10 @@ public class IntentBasedTestSupport {
     public static final String KEY_DURATION = "duration";
     public static final int VALUE_DEFAULT_DURATION = 10;
 
+    public static final String KEY_DEVICE_TYPE = "device";
+
+    public static final int VALUE_DEFAULT_DEVICE_TYPE = 0;
+
     public static int getApiFromText(String text) {
         if (VALUE_API_AAUDIO.equals(text)) {
             return StreamConfiguration.NATIVE_API_AAUDIO;
@@ -304,7 +308,6 @@ public class IntentBasedTestSupport {
         int usage = getUsageFromText(text);
         requestedOutConfig.setUsage(usage);
 
-
     }
 
     public static void configureInputStreamFromBundle(Bundle bundle,
@@ -373,5 +376,9 @@ public class IntentBasedTestSupport {
 
     public static int getDurationSeconds(Bundle bundle) {
         return bundle.getInt(KEY_DURATION, VALUE_DEFAULT_DURATION);
+    }
+
+    public static int getDeviceTypeFromBundle(Bundle bundle) {
+        return bundle.getInt(KEY_DEVICE_TYPE, VALUE_DEFAULT_DEVICE_TYPE);
     }
 }

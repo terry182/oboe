@@ -198,6 +198,12 @@ public final class TestOutputActivity extends TestOutputActivityBase {
             int signalType = IntentBasedTestSupport.getSignalTypeFromBundle(mBundleFromIntent);
             mAudioOutTester.setSignalType(signalType);
 
+            int deviceType = IntentBasedTestSupport.getDeviceTypeFromBundle(mBundleFromIntent);
+            int deviceId = getOutputDeviceIdFromType(deviceType);
+            requestedOutConfig.setDeviceId(deviceId);
+
+            updateStreamConfigurationViews();
+
             openAudio();
             startAudio();
 

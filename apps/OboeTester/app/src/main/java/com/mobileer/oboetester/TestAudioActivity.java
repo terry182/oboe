@@ -707,6 +707,24 @@ abstract class TestAudioActivity extends AppCompatActivity {
         return false;
     }
 
+    int getOutputDeviceIdFromType(int deviceType) {
+        AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        AudioDeviceInfo[] devices = manager.getDevices(AudioManager.GET_DEVICES_OUTPUTS);
+        int targetDeviceId = 0;
+        Log.i(TAG, "getOutputDeviceIdFromType() called======");
+
+        for (AudioDeviceInfo device : devices) {
+            Log.i(TAG, "Possible device: " + device.getType());
+            if (device.getType() == deviceType) {
+                targetDeviceId = device.getId();
+                Log.i(TAG, "==========Found device======");
+                break;
+            }
+        }
+        return targetDeviceId;
+    }
+
+
     private void openStreamContext(StreamContext streamContext) throws IOException {
         StreamConfiguration requestedConfig = streamContext.tester.requestedConfiguration;
         StreamConfiguration actualConfig = streamContext.tester.actualConfiguration;
